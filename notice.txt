@@ -1,0 +1,54 @@
+//push 后边还存在两个回调方法
+//onComplete 导航完成 执行第一个
+//导航失败 执行第二个 经测试 地址重复时会触发onAbort 回调
+this.$router.push({name:"SecondPage",query:{id:num}},function (e) {
+  console.log("触发回调onComplete",e)
+},function (e) {
+  console.log("触发回调onAbort",e)
+})
+
+
+//vuex 取 store的三种形式
+//优雅的对象展开运算符...
+...mapGetters
+...mapState({
+  // 箭头函数可使代码更简练
+  count: state => state.count,
+
+  // 传字符串参数 'count' 等同于 `state => state.count`
+  count2: 'count2',
+
+  // 为了能够使用 `this` 获取局部状态，必须使用常规函数
+  countPlusLocalState (state) {
+    return state.count2 + this.localCount
+  }
+}),
+methods: {
+  ...mapMutations([
+
+    'incrementBy' // 将 `this.incrementBy(amount)` 映射为 `this.$store.commit('incrementBy', amount)`,
+    add: 'increment' // 将 `this.add()` 映射为 `this.$store.commit('increment')`
+  ]),
+}
+
+
+//三种route钩子
+beforeRouteEnter (to, from, next) {
+  console.log("触发进入方法")
+  next()
+},
+beforeRouteUpdate (to, from, next) {
+  console.log("路由器信息",next)
+  next();
+},
+beforeRouteLeave (to, from, next) {
+  console.log("触发离开方法")
+  next()
+},
+-------------------------------------------------------------------------------
+//添加Cookies
+Cookies.set("form",this.formData,{ expires: 7 });
+Cookies.get('form');
+Cookies.getJSON('form');
+//删除
+Cookies.remove('name');

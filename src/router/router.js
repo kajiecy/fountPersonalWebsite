@@ -1,44 +1,70 @@
 import Main from '@/views/layout/Home.vue';
 
-// 不作为Main组件的子页面展示的页面单独写，如下
-// export const loginRouter = {
-//     path: '/login',
-//     name: 'login',
-//     meta: {
-//         title: 'Login - 登录'
-//     },
-//     component: () => import('@/views/Login.vue')
-// };
 
 
 
-export const homeRouter = {
-    path: '/home',
-    name: 'home',
-    component: Main,
-    children:[
-      {
-        //home 界面 路由的 默认 显示界面
-        path: '/',
-        name: 'welcome',
-        // component: resolve => require(['@/views/testviews/test1.vue'], resolve)
-        // component: resolve => require(['@/views/chartsviews/ChartsCabinet.vue'], resolve)
-        component: resolve => require(['@/views/Welcome.vue'], resolve)
-      },
-    ]
-};
-// 作为Main组件的子页面展示并且在左侧菜单显示的路由写在appRouter里
-export const appRouter = [
-
-];
 // 作为Main组件的子页面展示但是不在左侧菜单显示的路由写在otherRouter里
 export const otherRouter = {
     path: '/',
-    // redirect: '/charts/chartscabinet',
+    name: 'otherRouter',
     redirect: '/home',
     component: Main,
-    children: []
+    children: [
+        {path: 'home', title: {i18n: 'home'}, name: 'home', component: () => import('@/views/Welcome.vue')},
+
+    ]
 };
+
+// 作为Main组件的子页面展示并且在左侧菜单显示的路由写在appRouter里
+export const appRouter = [
+    {
+        path: '/',
+        component: Main,
+        children: [
+            {
+                path: 'test1',
+                icon: 'lock-combination',
+                title: 'test1界面2',
+                name: 'test1',
+                component: () => import('@/views/testviews/test1.vue')
+            }
+        ]
+    },
+    {
+        path: '/',
+        component: Main,
+        children: [
+            {
+                path: 'test2',
+                icon: 'lock-combination',
+                title: 'test2界面2',
+                name: 'test2',
+                component: () => import('@/views/testviews/test2.vue')
+            }
+        ]
+    },
+    {
+        path: '/',
+        icon: 'lock-combination',
+        title: 'test3界面1',
+        component: Main,
+        children: [
+            {
+                path: 'test3-1',
+                title: 'test3-1界面2',
+                name: 'test3-1',
+                component: () => import('@/views/testviews/test3-1.vue')
+            },
+            {
+                path: 'test3-2',
+                title: 'test3-2界面2',
+                name: 'test3-2',
+                component: () => import('@/views/testviews/test3-2.vue')
+            }
+        ]
+    }
+
+];
 export const undefindRouter = {
     path: '/404',
     name: '404',
@@ -49,16 +75,13 @@ export const undefindRouter = {
 };
 export const nullRouter = {
     path: '*',
+    name:'null',
     redirect: '/404'
 };
-
-
 // 所有上面定义的路由都要写在下面的routers里
 export const routers = [
-    // loginRouter,
-    ...appRouter,
-    homeRouter,
     otherRouter,
-    nullRouter,
-    undefindRouter
+    ...appRouter,
+    undefindRouter,
+    nullRouter
 ];
