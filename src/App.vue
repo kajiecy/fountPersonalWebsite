@@ -13,5 +13,5 @@
 <style>
   @import "./styles/main.less";
   @import "./styles/common.less";
-  @import "//at.alicdn.com/t/font_695557_24sj51jkgtqn0zfr.css";
+  @import "//at.alicdn.com/t/font_695557_cgjresnpavan61or.css";
 </style>

@@ -1,11 +1,19 @@
 <template>
-    <el-aside :width="null">
+    <el-aside class="" :width="null">
 
 
-        <div>
 
-        </div>
-        <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+        <el-menu style="height: calc(100%)" default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse"
+                 background-color="#495060"
+                 text-color="#fff"
+                 active-text-color="#409EFF"
+        >
+            <div class="menu-color" style="text-align: center;padding:  10px 0;">
+                <!--//在线生成的艺术字有点位置问题 卡字有些靠上了 我要处理一下-->
+                <span class="img_logo" :class="isCollapse==false?'logo_big':'logo_small'" >
+                    <img class="img_logo":class="isCollapse==false?'logo_big':'logo_small'" :src="isCollapse==false?$store.state.app.logoImgUrl:$store.state.app.logoImgSmallUrl">
+                </span>
+            </div>
             <el-submenu index="1">
                 <template slot="title">
                     <i class="el-icon-location"></i>
@@ -44,7 +52,7 @@
     export default {
         data() {
             return {
-                isCollapse: false
+
             }
         },
         created() {
@@ -62,18 +70,42 @@
 //                console.log(key, keyPath);
             }
         },
-        computed: {},
-        components: {}
+        computed: {
+            isCollapse(){
+                return this.$store.state.app.isCollapse
+            }
+        },
+        components: {
+
+        }
     }
 </script>
 
 <style scoped>
     .el-aside{
-        background-color: #67BB1E;
+
     }
 
     .el-menu-vertical-demo:not(.el-menu--collapse) {
         width: 200px;
         min-height: 400px;
+    }
+    .img_logo{
+        border-radius: 7px;
+        border-bottom-left-radius: 0px;
+        display: inline-block;
+        overflow: hidden;
+        background-color: #2D8CF0;
+        transition: all .5s;
+    }
+    .logo_big{
+        width: 160px;
+        height: 40px;
+    }
+    .logo_small{
+        width: 40px;
+        height: 40px;
+        position: relative;
+        top: 5px;
     }
 </style>

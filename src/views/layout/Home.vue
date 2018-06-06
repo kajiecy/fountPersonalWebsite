@@ -6,9 +6,7 @@
       <kajie-header></kajie-header>
       <!--main-->
       <el-main>
-        <div>
-
-        </div>
+        <router-view/>
       </el-main>
     </el-container>
   </el-container>

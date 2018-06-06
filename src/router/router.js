@@ -16,10 +16,21 @@ export const homeRouter = {
     path: '/home',
     name: 'home',
     component: Main,
-
+    children:[
+      {
+        //home 界面 路由的 默认 显示界面
+        path: '/',
+        name: 'welcome',
+        // component: resolve => require(['@/views/testviews/test1.vue'], resolve)
+        // component: resolve => require(['@/views/chartsviews/ChartsCabinet.vue'], resolve)
+        component: resolve => require(['@/views/Welcome.vue'], resolve)
+      },
+    ]
 };
 // 作为Main组件的子页面展示并且在左侧菜单显示的路由写在appRouter里
-export const appRouter = [];
+export const appRouter = [
+
+];
 // 作为Main组件的子页面展示但是不在左侧菜单显示的路由写在otherRouter里
 export const otherRouter = {
     path: '/',
