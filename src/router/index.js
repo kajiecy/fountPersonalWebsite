@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import {routers} from './router';
+import store from './../store'
+
 
 Vue.use(Router)
 // import {Loading} from 'element-ui';
@@ -50,11 +52,16 @@ let loading = null;
 router.beforeEach((to, from, next) => {
     // loading = Loading.service({fullscreen: true});
     //点击
-    console.log("全局守卫触发",to)
+    // console.log("全局守卫触发",to)
+    console.log("matched is ",to.matched);
+    store.commit("updateBreadcrumbArr",to.matched);
+    // [{title:'首页',name:'home'},{title:'界面3'},{title:'界面3-1',name:'test3-1',query:{id:"111"}}]
+
     next();
 })
 router.afterEach(() => {
     // loading.close();
     window.scrollTo(0, 0);
+
 });
 export default router;

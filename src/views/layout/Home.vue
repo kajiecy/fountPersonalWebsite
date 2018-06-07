@@ -6,7 +6,9 @@
       <kajie-header></kajie-header>
       <!--main-->
       <el-main>
-        <router-view/>
+        <el-card class="box-card" :body-style="{ padding: '10px' }">
+          <router-view/>
+        </el-card>
       </el-main>
     </el-container>
   </el-container>
@@ -41,8 +43,9 @@
     height: 100%;
   }
   .el-main{
-    background-color: #ffffff;
-    margin-top: 5px;
+    padding: 10px;
+    margin-top: 0px;
+    background-color: #F0F0F0;
   }
 
 </style>

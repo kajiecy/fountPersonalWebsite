@@ -8,15 +8,22 @@
             </div>
             <div class="dis_table_cell textleft " style="padding-left: 20px">
                 <el-breadcrumb separator-class="el-icon-arrow-right">
-                    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                    <el-breadcrumb-item :to="{ name: 'test2' }">活动管理</el-breadcrumb-item>
-                    <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+                    <template v-for="(item,index) in $store.state.app.breadcrumbArr">
+                        <el-breadcrumb-item :to="item.name==null?null:{ name: item.name,query:item.query}">{{item.title}}</el-breadcrumb-item>
+                    </template>
+
                 </el-breadcrumb>
             </div>
             <div class="dis_table_cell textright">
                 <div class="dis_table wd100 ">
                     <div class="dis_table_cell textright">
                         <!--导航图标-->
+                        <a href="https://www.jianshu.com/u/5636d2922139" target="_blank">
+                            <div style="display: inline-block;width: 27px;height: 27px;background-color: #495060;border-radius: 15px;text-align: center;position: relative;top: 2px;">
+                                <span style="font-size: 16px;line-height: 27px;color: white">简</span>
+                            </div>
+                        </a>
+
                         <a href="https://github.com/kajiecy" target="_blank">
                             <i class="iconfont icon-github"></i>
                         </a>

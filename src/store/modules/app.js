@@ -7,6 +7,7 @@ const app = {
         logoImgUrl:'http://qiniu.kajie88.com/siteLOGO.PNG',
         logoImgSmallUrl:'http://qiniu.kajie88.com/siteLOGO-small.PNG',
         menuList:[],
+        breadcrumbArr:[{title:'首页',name:'home'},{title:'界面3'},{title:'界面3-1',name:'test3-1',query:{id:"111"}}],
     },
     getters:{
         getMenuList(){
@@ -37,20 +38,20 @@ const app = {
                 let subMenu = {}
 
                 if(router.children!=null&&router.children.length>1){
-                    subMenu.icon = router.icon;
-                    subMenu.title = router.title;
+                    subMenu.icon = router.meta.icon;
+                    subMenu.title = router.meta.title;
                     subMenu.index = router.name==null?"":router.name;
                     subMenu.subs = [];
                     for(let subRoute of router.children){
                         subMenu.subs.push({
                             index: subRoute.name,
-                            title: subRoute.title
+                            title: subRoute.meta.title
                         })
                     }
 
                 }else {
-                    subMenu.icon = router.children[0].icon;
-                    subMenu.title = router.children[0].title;
+                    subMenu.icon = router.children[0].meta.icon;
+                    subMenu.title = router.children[0].meta.title;
                     subMenu.index = router.children[0].name;
                 }
                 menuList.push(subMenu)
@@ -64,6 +65,16 @@ const app = {
         changeCollapse (state) {
             // 变更状态
             state.isCollapse=!state.isCollapse;
+        },
+        updateBreadcrumbArr(state,routerMatched){
+            //路由每次变动修改面包屑
+            let newBreadcrumb = [{title:'首页',name:'home'}];
+            for(let item of routerMatched){
+                if(item.meta.title!=null){
+                    newBreadcrumb.push({title:item.meta.title,name:item.name,query:item.query})
+                }
+            }
+            state.breadcrumbArr = newBreadcrumb;
         }
     }
 };
