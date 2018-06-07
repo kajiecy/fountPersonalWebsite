@@ -11,7 +11,6 @@
                     <template v-for="(item,index) in $store.state.app.breadcrumbArr">
                         <el-breadcrumb-item :to="item.name==null?null:{ name: item.name,query:item.query}">{{item.title}}</el-breadcrumb-item>
                     </template>
-
                 </el-breadcrumb>
             </div>
             <div class="dis_table_cell textright">
@@ -19,8 +18,8 @@
                     <div class="dis_table_cell textright">
                         <!--导航图标-->
                         <a href="https://www.jianshu.com/u/5636d2922139" target="_blank">
-                            <div style="display: inline-block;width: 27px;height: 27px;background-color: #495060;border-radius: 15px;text-align: center;position: relative;top: 2px;">
-                                <span style="font-size: 16px;line-height: 27px;color: white">简</span>
+                            <div style="display: inline-block;width: 26px;height: 26px;background-color: #495060;border-radius: 15px;text-align: center;position: relative;top: 2px;">
+                                <span style="font-size: 16px;line-height: 26px;color: white">简</span>
                             </div>
                         </a>
 
@@ -88,14 +87,15 @@
     .div_header_sum{
         height: 60px;
         background-color: white;
-        box-shadow:0px 1px 4px rgba(31, 16, 16, 0.4)
+        box-shadow:0px 1px 5px rgba(31, 16, 16, 0.2)
 
     }
     .head_img {
         width: 40px;
         height: 40px;
         border-radius: 30px;
-        box-shadow: 0 0 10px rgba(31, 16, 16, 0.5), 0 0 15px rgba(31, 16, 16, 0.2) inset;
+        box-shadow: 0 0 6px rgba(31, 16, 16, 0.5), 0 0 12px rgba(31, 16, 16, 0.2) inset;
+
     }
     .el-dropdown-link{
         font-size: 14px;

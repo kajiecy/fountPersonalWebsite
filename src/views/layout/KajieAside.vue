@@ -12,7 +12,7 @@
                  :default-active="onRoutes"
         >
             <div class="menu-color" style="text-align: center;padding:  10px 0;">
-                <!--//在线生成的艺术字有点位置问题 卡字有些靠上了 我要处理一下-->
+                <!--//在线生成的艺术字有点位置问题 字有些靠上了 我要处理一下-->
                 <span class="img_logo" :class="isCollapse==false?'logo_big':'logo_small'" >
                     <img class="img_logo":class="isCollapse==false?'logo_big':'logo_small'" :src="isCollapse==false?$store.state.app.logoImgUrl:$store.state.app.logoImgSmallUrl">
                 </span>

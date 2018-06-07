@@ -7,7 +7,7 @@ const app = {
         logoImgUrl:'http://qiniu.kajie88.com/siteLOGO.PNG',
         logoImgSmallUrl:'http://qiniu.kajie88.com/siteLOGO-small.PNG',
         menuList:[],
-        breadcrumbArr:[{title:'首页',name:'home'},{title:'界面3'},{title:'界面3-1',name:'test3-1',query:{id:"111"}}],
+        breadcrumbArr:[{title:'首页',name:'home'}],
     },
     getters:{
         getMenuList(){
