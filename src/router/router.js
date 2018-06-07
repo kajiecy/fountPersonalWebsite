@@ -23,8 +23,8 @@ export const appRouter = [
         children: [
             {
                 path: 'test1',
-                icon: 'lock-combination',
-                title: 'test1界面2',
+                icon: 'el-icon-date',
+                title: 'test1界面',
                 name: 'test1',
                 component: () => import('@/views/testviews/test1.vue')
             }
@@ -36,8 +36,8 @@ export const appRouter = [
         children: [
             {
                 path: 'test2',
-                icon: 'lock-combination',
-                title: 'test2界面2',
+                icon: 'el-icon-news',
+                title: 'test2界面',
                 name: 'test2',
                 component: () => import('@/views/testviews/test2.vue')
             }
@@ -45,13 +45,13 @@ export const appRouter = [
     },
     {
         path: '/',
-        icon: 'lock-combination',
-        title: 'test3界面1',
+        icon: 'el-icon-menu',
+        title: 'test3界面',
         component: Main,
         children: [
             {
                 path: 'test3-1',
-                title: 'test3-1界面2',
+                title: 'test3-1界面1',
                 name: 'test3-1',
                 component: () => import('@/views/testviews/test3-1.vue')
             },

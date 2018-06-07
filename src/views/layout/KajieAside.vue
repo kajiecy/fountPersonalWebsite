@@ -7,6 +7,8 @@
                  background-color="#495060"
                  text-color="#fff"
                  active-text-color="#409EFF"
+                 unique-opened
+                 router
         >
             <div class="menu-color" style="text-align: center;padding:  10px 0;">
                 <!--//在线生成的艺术字有点位置问题 卡字有些靠上了 我要处理一下-->
@@ -14,36 +16,25 @@
                     <img class="img_logo":class="isCollapse==false?'logo_big':'logo_small'" :src="isCollapse==false?$store.state.app.logoImgUrl:$store.state.app.logoImgSmallUrl">
                 </span>
             </div>
-            <el-submenu index="1">
-                <template slot="title">
-                    <i class="el-icon-location"></i>
-                    <span slot="title">导航一</span>
+            <template v-for="item in menuList">
+                <template v-if="item.subs">
+                    <el-submenu :index="item.index">
+                        <template slot="title"><i :class="item.icon"></i>
+                            <span slot="title">{{ item.title }}</span>
+                        </template>
+                        <el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index">
+                            {{ subItem.title }}
+                        </el-menu-item>
+                    </el-submenu>
                 </template>
-                <el-menu-item-group>
-                    <span slot="title">分组一</span>
-                    <el-menu-item index="1-1">选项1</el-menu-item>
-                    <el-menu-item index="1-2">选项2</el-menu-item>
-                </el-menu-item-group>
-                <el-menu-item-group title="分组2">
-                    <el-menu-item index="1-3">选项3</el-menu-item>
-                </el-menu-item-group>
-                <el-submenu index="1-4">
-                    <span slot="title">选项4</span>
-                    <el-menu-item index="1-4-1">选项1</el-menu-item>
-                </el-submenu>
-            </el-submenu>
-            <el-menu-item index="2">
-                <i class="el-icon-menu"></i>
-                <span slot="title">导航二</span>
-            </el-menu-item>
-            <el-menu-item index="3" disabled>
-                <i class="el-icon-document"></i>
-                <span slot="title">导航三</span>
-            </el-menu-item>
-            <el-menu-item index="4">
-                <i class="el-icon-setting"></i>
-                <span slot="title">导航四</span>
-            </el-menu-item>
+                <template v-else>
+                    <el-menu-item :index="item.index">
+                        <i :class="item.icon"></i>
+                        <span slot="title">{{ item.title }}</span>
+                    </el-menu-item>
+                </template>
+            </template>
+
         </el-menu>
     </el-aside>
 </template>
@@ -72,7 +63,10 @@
         },
         computed: {
             isCollapse(){
-                return this.$store.state.app.isCollapse
+                return this.$store.state.app.isCollapse;
+            },
+            menuList(){
+                return this.$store.getters.getMenuList;
             }
         },
         components: {
@@ -107,5 +101,8 @@
         height: 40px;
         position: relative;
         top: 5px;
+    }
+    [class*="el-icon"]{
+        color: white;
     }
 </style>

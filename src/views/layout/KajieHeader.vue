@@ -9,7 +9,7 @@
             <div class="dis_table_cell textleft " style="padding-left: 20px">
                 <el-breadcrumb separator-class="el-icon-arrow-right">
                     <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                    <el-breadcrumb-item>活动管理</el-breadcrumb-item>
+                    <el-breadcrumb-item :to="{ name: 'test2' }">活动管理</el-breadcrumb-item>
                     <el-breadcrumb-item>活动列表</el-breadcrumb-item>
                 </el-breadcrumb>
             </div>

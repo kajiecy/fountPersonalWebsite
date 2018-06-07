@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import {routers} from './router';
-Vue.use(Router)
 
+Vue.use(Router)
+// import {Loading} from 'element-ui';
 
 
 // 路由配置
 const RouterConfig = {
-  // mode: 'history',
-  routes: routers
+    // mode: 'history',
+    routes: routers
 }
 const router = new Router(RouterConfig);
 // const routers = new Router({
@@ -45,8 +46,15 @@ const router = new Router(RouterConfig);
  * next('/') 或者 next({ path: '/' }): 跳转到一个不同的地址。当前的导航被中断，然后进行一个新的导航。你可以向 next 传递任意位置对象，且允许设置诸如 replace: true、name: 'home' 之类的选项以及任何用在 router-link 的 to prop 或 router.push 中的选项。
  * next(error): (2.4.0+) 如果传入 next 的参数是一个 Error 实例，则导航会被终止且该错误会被传递给 router.onError() 注册过的回调。
  */
-  router.beforeEach((to, from, next) => {
-    // console.log("全局守卫触发")
-     next();
-  })
+let loading = null;
+router.beforeEach((to, from, next) => {
+    // loading = Loading.service({fullscreen: true});
+    //点击
+    console.log("全局守卫触发",to)
+    next();
+})
+router.afterEach(() => {
+    // loading.close();
+    window.scrollTo(0, 0);
+});
 export default router;

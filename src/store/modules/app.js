@@ -32,25 +32,31 @@ const app = {
             ];
             * */
             let menuList = [];
-            console.log("appRouter's data is",appRouter)
+            // console.log("appRouter's data is",appRouter)
             for(let router of appRouter){
                 let subMenu = {}
 
                 if(router.children!=null&&router.children.length>1){
                     subMenu.icon = router.icon;
                     subMenu.title = router.title;
-                    subMenu.index = router.name;
+                    subMenu.index = router.name==null?"":router.name;
                     subMenu.subs = [];
                     for(let subRoute of router.children){
                         subMenu.subs.push({
                             index: subRoute.name,
                             title: subRoute.title
                         })
-
                     }
 
+                }else {
+                    subMenu.icon = router.children[0].icon;
+                    subMenu.title = router.children[0].title;
+                    subMenu.index = router.children[0].name;
                 }
+                menuList.push(subMenu)
             }
+            // console.log("menuList's data is",menuList)
+            return menuList;
         },
 
     },
