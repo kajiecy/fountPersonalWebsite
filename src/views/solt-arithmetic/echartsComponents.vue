@@ -43,7 +43,7 @@
                 ],
                 arrayDataO:[],
                 i:0,
-                j:0,
+                j:29,
                 isComplate:0,
                 myChart:{},
                 changeCount:0,
@@ -81,8 +81,8 @@
                 for(;this.i < this.arrayData.length - 1;){
 //                  console.log("进入循环1")
                     for(;;){// j开始等于0，
-                        if(!(this.j <  this.arrayData.length - 1-this.i)){
-                            this.j = 0;
+                        if(!(this.j >  this.i)){
+                            this.j = 29;
 //                          this.softMethods()
                             this.i++
                             this.myChart.setOption(this.options,false);
@@ -95,7 +95,7 @@
                             this.arrayData[this.j+1] = temp;
                             this.changeCount++;
                         }
-                        this.j++;
+                        this.j--;
                         this.myChart.setOption(this.options,false);
                         return
                     }
