@@ -22,6 +22,21 @@ export const appRouter = [
         component: Main,
         children: [
             {
+                path: 'solt-arithmetic',
+                name: 'solt-arithmetic',
+                meta:{
+                    icon: 'el-icon-date',
+                    title: '排序算法展示',
+                },
+                component: () => import('@/views/solt-arithmetic/index.vue')
+            }
+        ]
+    },
+    {
+        path: '/',
+        component: Main,
+        children: [
+            {
                 path: 'test1',
                 name: 'test1',
                 meta:{

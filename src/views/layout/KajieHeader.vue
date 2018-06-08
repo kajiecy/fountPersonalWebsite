@@ -18,7 +18,7 @@
                     <div class="dis_table_cell textright">
                         <!--导航图标-->
                         <a href="https://www.jianshu.com/u/5636d2922139" target="_blank">
-                            <div style="display: inline-block;width: 26px;height: 26px;background-color: #495060;border-radius: 15px;text-align: center;position: relative;top: 2px;">
+                            <div style="display: inline-block;width: 26px;height: 26px;background-color: #495060;border-radius: 15px;text-align: center;position: relative;top: 1px;">
                                 <span style="font-size: 16px;line-height: 26px;color: white">简</span>
                             </div>
                         </a>

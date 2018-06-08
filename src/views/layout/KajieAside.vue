@@ -85,7 +85,6 @@
     .el-aside{
 
     }
-
     .el-menu-vertical-demo:not(.el-menu--collapse) {
         width: 200px;
         min-height: 400px;
@@ -96,7 +95,7 @@
         display: inline-block;
         overflow: hidden;
         background-color: #2D8CF0;
-        transition: all .5s;
+        /*transition: all .5s;*/
     }
     .logo_big{
         width: 160px;
