@@ -33,7 +33,7 @@
             title:{
                 type:String,
                 default(){
-                    return "选择排序";
+                    return "插入排序";
                 }
             },
             animation: false
@@ -48,12 +48,12 @@
                 arrayDataO:[],
                 i:0,
                 j:0,
-                minIndex:0,
+                get:0,
+                state:0,
                 isComplate:0,
                 myChart:{},
                 changeCount:0,
                 sumCount:0,
-
             }
         },
         created() {
@@ -80,42 +80,27 @@
         methods: {
             softMethods(){
 
-
-                let len = this.arrayData.length;
-                let  temp;
-                for (; this.i < len - 1; ) {
-                    if(this.j == this.i + 1){
-                        this.minIndex = this.i;
+                for (; this.i < this.arrayData.length; ){        // 类似抓扑克牌排序
+                    if(this.state==0){
+                        this.get = this.arrayData[this.i];                 // 右手抓到一张扑克牌
+                        this.j = this.i - 1;                  // 拿在左手上的牌总是排序好的
                     }
-
-
-                    for (;;) {
-                        if(this.j >= len){
-                            this.j = this.i + 1;
-//                            this.sumCount++;
-                            break;
-                        }
-                        if (this.arrayData[this.j] < this.arrayData[this.minIndex]) {     // 寻找最小的数
-                            this.minIndex = this.j;                 // 将最小数的索引保存
-                        }
-
-                        this.j++;
+                    for (;this.j >= 0 && this.arrayData[this.j] > this.get;){    // 将抓到的牌与手牌从右向左进行比较
+                        this.state = 1;
+                        this.arrayData[this.j + 1] = this.arrayData[this.j];            // 如果该手牌比抓到的牌大，就将其右移
+                        this.changeCount++;
+                        this.j--;
                         this.myChart.setOption(this.options,false);
-                        if(this.j < len){
-                            this.sumCount++;
-                            return;
-                        }
-//
-
+                        this.sumCount++;
+                        return;
                     }
-                    temp = this.arrayData[this.i];
-                    this.arrayData[this.i] = this.arrayData[this.minIndex];
-                    this.arrayData[this.minIndex] = temp;
-                    this.changeCount++;
+                    this.state = 0;
+                    this.arrayData[this.j + 1] = this.get; // 直到该手牌比抓到的牌小(或二者相等)，将抓到的牌插入到该手牌右边(相等元素的相对次序未变，所以插入排序是稳定的)
                     this.i++;
+                    this.changeCount++;
                     this.sumCount++;
                     this.myChart.setOption(this.options,false);
-                    return
+                    return;
                 }
 
             },
@@ -152,7 +137,7 @@
 //                                    }else {
 //                                        return '#67C23A'
 //                                    }
-                                    if(item.dataIndex==this.minIndex){
+                                    if(item.dataIndex==this.i){
                                         return '#F56C6C'
                                     }else if(item.dataIndex+1==item.data){
                                         return '#67C23A'
@@ -168,7 +153,7 @@
                             opacity: 0.8,
                             color:(item)=>{
                                 //console.log(item)
-                                if(item.dataIndex==this.j){
+                                if(item.dataIndex==this.j+2){
                                     return '#E6A23C';
                                 }else {
                                     return 'rgba(252,214,80,0)'

@@ -9,7 +9,7 @@
             <div class="dis_table_cell textleft " style="padding-left: 20px">
                 <el-breadcrumb separator-class="el-icon-arrow-right">
                     <template v-for="(item,index) in $store.state.app.breadcrumbArr">
-                        <el-breadcrumb-item :to="item.name==null?null:{ name: item.name,query:item.query}">{{item.title}}</el-breadcrumb-item>
+                        <el-breadcrumb-item :to="item.name==null?null:{ name: item.name,query:item.query}" :key="index">{{item.title}}</el-breadcrumb-item>
                     </template>
                 </el-breadcrumb>
             </div>

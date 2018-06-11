@@ -37,6 +37,21 @@ export const appRouter = [
         component: Main,
         children: [
             {
+                path: 'div-move',
+                name: 'div-move',
+                meta:{
+                    icon: 'el-icon-date',
+                    title: 'div拖拽Demo',
+                },
+                component: () => import('@/views/div-move/index.vue')
+            }
+        ]
+    },
+    {
+        path: '/',
+        component: Main,
+        children: [
+            {
                 path: 'test1',
                 name: 'test1',
                 meta:{

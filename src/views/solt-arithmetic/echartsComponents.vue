@@ -2,6 +2,9 @@
     <div>
         <div :id="id" style="width: 400px;height: 350px"></div>
         数据交换次数：{{changeCount}}
+        <div>
+            循环次数：{{sumCount}}
+        </div>
     </div>
 
 
@@ -47,6 +50,8 @@
                 isComplate:0,
                 myChart:{},
                 changeCount:0,
+                sumCount:0,
+
             }
         },
         created() {
@@ -85,6 +90,7 @@
                             this.j = 29;
 //                          this.softMethods()
                             this.i++
+                            this.sumCount++;
                             this.myChart.setOption(this.options,false);
                             return
                         }
@@ -96,6 +102,7 @@
                             this.changeCount++;
                         }
                         this.j--;
+                        this.sumCount++;
                         this.myChart.setOption(this.options,false);
                         return
                     }
