@@ -4,11 +4,14 @@
             <el-button @click="runArithmetic()">执行</el-button>
         </div>
         <el-row>
-            <el-col :span="12">
+            <el-col :span="8">
                 <my-echart ref="mydata1" :id="'mydata1'" :arrayDataP="arrayData"></my-echart>
             </el-col>
-            <el-col :span="12">
+            <el-col :span="8">
                 <selection-sort-components  ref="mydata2" :id="'mydata2'" :arrayDataP="arrayData"></selection-sort-components>
+            </el-col>
+            <el-col :span="8">
+                <insertion-sort-components  ref="mydata3" :id="'mydata3'" :arrayDataP="arrayData"></insertion-sort-components>
             </el-col>
         </el-row>
 
@@ -19,6 +22,7 @@
 
     import  myEchart from  "./echartsComponents.vue";
     import SelectionSortComponents from  './SelectionSortComponents.vue';
+    import InsertionSortComponents from  './InsertionSortComponents.vue';
     export default {
         data() {
             return {
@@ -39,7 +43,7 @@
         watch: {},
         methods: {
             runArithmetic(){
-                console.log(this.$refs)
+//                console.log(this.$refs)
                 window.setInterval(()=>{
                     for(let refName in this.$refs){
                         this.$refs[refName].changeDataj();
@@ -53,6 +57,7 @@
         components: {
             myEchart,
             SelectionSortComponents,
+            InsertionSortComponents,
         }
     }
 </script>

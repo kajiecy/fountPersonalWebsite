@@ -15,9 +15,6 @@
         mounted() {
 
         },
-        mounted() {
-
-        },
         watch: {},
         methods: {},
         computed: {},
