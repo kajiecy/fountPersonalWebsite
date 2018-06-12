@@ -6,9 +6,15 @@
       <kajie-header></kajie-header>
       <!--main-->
       <el-main>
-        <el-card class="box-card" :body-style="{ padding: '10px' }">
+        <template v-if="$route.path=='/div-move'">
           <router-view/>
-        </el-card>
+        </template>
+        <template v-else>
+          <el-card class="box-card" :body-style="{ padding: '10px',height:'100%'}">
+            <router-view/>
+          </el-card>
+        </template>
+
       </el-main>
     </el-container>
   </el-container>
@@ -38,7 +44,7 @@
         }
     };
 </script>
-<style scoped>
+<style >
   .el-container{
     height: 100%;
   }

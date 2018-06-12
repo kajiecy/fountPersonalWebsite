@@ -20,7 +20,7 @@
 
 <script>
 
-    import  myEchart from  "./echartsComponents.vue";
+    import myEchart from  "./echartsComponents.vue";
     import SelectionSortComponents from  './SelectionSortComponents.vue';
     import InsertionSortComponents from  './InsertionSortComponents.vue';
     export default {
