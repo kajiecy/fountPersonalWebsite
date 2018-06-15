@@ -7,6 +7,9 @@
         <div>
             循环次数：{{sumCount}}
         </div>
+        <div>
+            isComplate:{{isComplate}}
+        </div>
     </div>
 
 </template>
@@ -79,7 +82,7 @@
         watch: {},
         methods: {
             softMethods(){
-
+                let beginCount = this.sumCount;
 
                 let len = this.arrayData.length;
                 let  temp;
@@ -87,8 +90,6 @@
                     if(this.j == this.i + 1){
                         this.minIndex = this.i;
                     }
-
-
                     for (;;) {
                         if(this.j >= len){
                             this.j = this.i + 1;
@@ -105,8 +106,6 @@
                             this.sumCount++;
                             return;
                         }
-//
-
                     }
                     temp = this.arrayData[this.i];
                     this.arrayData[this.i] = this.arrayData[this.minIndex];
@@ -117,7 +116,9 @@
                     this.myChart.setOption(this.options,false);
                     return
                 }
-
+                if(beginCount === this.sumCount){
+                    this.isComplate = 1;
+                }
             },
             changeDataj(){
                 let vm = this;

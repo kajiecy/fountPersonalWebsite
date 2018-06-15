@@ -5,6 +5,9 @@
         <div>
             循环次数：{{sumCount}}
         </div>
+        <div>
+            isComplate:{{isComplate}}
+        </div>
     </div>
 
 
@@ -81,7 +84,6 @@
                 //如果 i == this.arrayData.length-1 跳出循环
                 if(this.i==this.arrayData.length-1){
                     this.isComplate = 1;
-//                    window.clearInterval(timePicker)
                 }
                 for(;this.i < this.arrayData.length - 1;){
 //                  console.log("进入循环1")

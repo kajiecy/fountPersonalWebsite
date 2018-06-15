@@ -13,25 +13,6 @@ const app = {
         getMenuList(){
             //this getter is conevt appRouter to menuList
             //the  format of menuList is:
-            /*[
-                {
-                    icon: 'el-icon-date',
-                    index: 'home',
-                    title: 'Dashboard'
-                }
-                {
-                    icon: 'el-icon-setting',
-                    index: 'company',
-                    title: '公司管理',
-                    subs: [
-                        {
-                            index: 'company_order_manager',
-                            title: '订单管理'
-                        }
-                    ]
-                }
-            ];
-            * */
             let menuList = [];
             // console.log("appRouter's data is",appRouter)
             for(let router of appRouter){

@@ -1,7 +1,14 @@
 <template>
     <div>
-        <div>
-            <el-button @click="runArithmetic()">执行</el-button>
+        <div style="padding: 10px">
+            <el-button @click="runArithmetic()" size="small" type="primary">执行</el-button>
+            <el-button size="small" type="warning">打乱</el-button>
+            <div>
+                {{timer}}
+            </div>
+            <div>
+                {{complete}}
+            </div>
         </div>
         <el-row>
             <el-col :span="8">
@@ -30,7 +37,9 @@
                     1,13,2,23,3,10,4,5,29,6,7,30,9,26,
                     12,11,14,28,17,16,20,19,15,24,
                     21,22,25,27,8,18,
-                ]
+                ],
+                timer:null,
+                complete:0,
             }
         },
         created() {
@@ -44,12 +53,26 @@
         methods: {
             runArithmetic(){
 //                console.log(this.$refs)
-                window.setInterval(()=>{
+                console.log('this.$refs.length',this.$refs)
+                this.timer = window.setInterval(()=>{
+                    console.log("running")
+                    this.complete = 0;
+                    let sumRef = 0;
                     for(let refName in this.$refs){
                         this.$refs[refName].changeDataj();
+
+                        if(this.$refs[refName].isComplate==1){
+                            this.complete++;
+                        }
+                        sumRef++;
+                    }
+                    if(this.complete===sumRef){
+                        window.clearInterval(this.timer)
+                        this.timer = null;
+                    }else {
+                        this.complete = 0;
                     }
                 },100)
-
 
             }
         },

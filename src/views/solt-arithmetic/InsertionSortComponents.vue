@@ -7,6 +7,9 @@
         <div>
             循环次数：{{sumCount}}
         </div>
+        <div>
+            isComplate:{{isComplate}}
+        </div>
     </div>
 
 </template>
@@ -79,6 +82,8 @@
         watch: {},
         methods: {
             softMethods(){
+                //sumcount 次数不变了 说明已经完成了
+                let beginCount = this.sumCount;
 
                 for (; this.i < this.arrayData.length; ){        // 类似抓扑克牌排序
                     if(this.state==0){
@@ -103,6 +108,9 @@
                     return;
                 }
 
+                if(beginCount === this.sumCount){
+                    this.isComplate = 1;
+                }
             },
             changeDataj(){
                 let vm = this;
