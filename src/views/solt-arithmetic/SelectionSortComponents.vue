@@ -19,23 +19,23 @@
     let timePicker = null;
     export default {
 
-        props:{
-            id:{
-              type:String,
-              default(){
-                  return ""
-              }
+        props: {
+            id: {
+                type: String,
+                default() {
+                    return ""
+                }
             },
             //父组件传来的统一数据
-            arrayDataP:{
-                type:Array,
-                default(){
+            arrayDataP: {
+                type: Array,
+                default() {
                     return [];
                 }
             },
-            title:{
-                type:String,
-                default(){
+            title: {
+                type: String,
+                default() {
                     return "选择排序";
                 }
             },
@@ -43,19 +43,19 @@
         },
         data() {
             return {
-                disposeData:[
-                    0,0,0,0,0,0,0,0,0,0,
-                    0,0,0,0,0,0,0,0,0,0,
-                    0,0,0,0,0,0,0,0,0,0,
+                disposeData: [
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                 ],
-                arrayDataO:[],
-                i:0,
-                j:0,
-                minIndex:0,
-                isComplate:0,
-                myChart:{},
-                changeCount:0,
-                sumCount:0,
+                arrayDataO: [],
+                i: 0,
+                j: 0,
+                minIndex: 0,
+                isComplate: 0,
+                myChart: {},
+                changeCount: 0,
+                sumCount: 0,
 
             }
         },
@@ -76,22 +76,22 @@
             // 基于准备好的dom，初始化echarts实例
             this.myChart = echarts.init(document.getElementById(vm.id));
             // 绘制图表
-            this.myChart.setOption(vm.options,false);
+            this.myChart.setOption(vm.options, false);
         },
 
         watch: {},
         methods: {
-            softMethods(){
+            softMethods() {
                 let beginCount = this.sumCount;
 
                 let len = this.arrayData.length;
-                let  temp;
-                for (; this.i < len - 1; ) {
-                    if(this.j == this.i + 1){
+                let temp;
+                for (; this.i < len - 1;) {
+                    if (this.j == this.i + 1) {
                         this.minIndex = this.i;
                     }
-                    for (;;) {
-                        if(this.j >= len){
+                    for (; ;) {
+                        if (this.j >= len) {
                             this.j = this.i + 1;
 //                            this.sumCount++;
                             break;
@@ -101,8 +101,8 @@
                         }
 
                         this.j++;
-                        this.myChart.setOption(this.options,false);
-                        if(this.j < len){
+                        this.myChart.setOption(this.options, false);
+                        if (this.j < len) {
                             this.sumCount++;
                             return;
                         }
@@ -113,23 +113,34 @@
                     this.changeCount++;
                     this.i++;
                     this.sumCount++;
-                    this.myChart.setOption(this.options,false);
+                    this.myChart.setOption(this.options, false);
                     return
                 }
-                if(beginCount === this.sumCount){
+                if (beginCount === this.sumCount) {
                     this.isComplate = 1;
                 }
             },
-            changeDataj(){
+            changeDataj() {
                 let vm = this;
 //                timePicker = window.setInterval(function () {
-                    vm.softMethods()
+                vm.softMethods()
 //                },150);
             },
+            reload() {
+                this.arrayDataO = [];
+                this.i = 0;
+                this.j = 0;
+                this.minIndex = 0;
+                this.isComplate = 0;
+                this.changeCount = 0;
+                this.sumCount = 0;
 
+                Object.assign(this.arrayDataO, this.arrayDataP);
+                this.myChart.setOption(this.options, false);
+            }
         },
         computed: {
-            options(){
+            options() {
                 return {
                     title: {
                         text: this.title
@@ -144,34 +155,35 @@
                         name: '',
                         type: 'bar',
                         data: this.arrayData,
-                        itemStyle:{
-                            normal:{
-                                color:(item)=>{
+                        itemStyle: {
+                            normal: {
+                                color: (item) => {
 //                                    console.log(item)
 //                                    if(this.disposeData[item.dataIndex]==0){
 //                                        return '#409EFF';
 //                                    }else {
 //                                        return '#67C23A'
 //                                    }
-                                    if(item.dataIndex==this.minIndex){
+                                    if (item.dataIndex == this.minIndex) {
                                         return '#F56C6C'
-                                    }else if(item.dataIndex+1==item.data){
+                                    } else if (item.dataIndex + 1 == item.data) {
                                         return '#67C23A'
                                     } else {
                                         return '#409EFF';
                                     }
                                 }
-                            }},
-                    },{
+                            }
+                        },
+                    }, {
                         type: 'bar',
                         barGap: '-140%',
                         itemStyle: {
                             opacity: 0.8,
-                            color:(item)=>{
+                            color: (item) => {
                                 //console.log(item)
-                                if(item.dataIndex==this.j){
+                                if (item.dataIndex == this.j) {
                                     return '#E6A23C';
-                                }else {
+                                } else {
                                     return 'rgba(252,214,80,0)'
                                 }
 //                                if(item.dataIndex+1==item.data){
@@ -182,23 +194,23 @@
                             }
                         },
                         barWidth: '60%',
-                        z:-1,
+                        z: -1,
                         data: [
-                            30,30,30,30,30,30,30,30,30,30,
-                            30,30,30,30,30,30,30,30,30,30,
-                            30,30,30,30,30,30,30,30,30,30,
+                            30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+                            30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+                            30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
                         ],
                     }]
                 }
             },
-            arrayData:{
-                get(){
-                    if(this.arrayDataO.length==0){
+            arrayData: {
+                get() {
+                    if (this.arrayDataO.length == 0) {
                         Object.assign(this.arrayDataO, this.arrayDataP);
                     }
                     return this.arrayDataO;
                 },
-                set(val){
+                set(val) {
                     this.this.arrayDataO = val;
                 }
             },

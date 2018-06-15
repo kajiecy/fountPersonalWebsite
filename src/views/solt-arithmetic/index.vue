@@ -1,14 +1,11 @@
 <template>
     <div>
         <div style="padding: 10px">
-            <el-button @click="runArithmetic()" size="small" type="primary">执行</el-button>
-            <el-button size="small" type="warning">打乱</el-button>
-            <div>
-                {{timer}}
-            </div>
-            <div>
-                {{complete}}
-            </div>
+            <el-button @click="runArithmetic()" size="small" type="primary" icon="el-icon-caret-right">执行</el-button>
+            <el-button size="small" type="warning" @click="messUp()">打乱</el-button>
+            <el-button size="small" type="danger" @click="messUp(-1)">倒序</el-button>
+
+
         </div>
         <el-row>
             <el-col :span="8">
@@ -53,8 +50,13 @@
         methods: {
             runArithmetic(){
 //                console.log(this.$refs)
-                console.log('this.$refs.length',this.$refs)
+
+                if(this.timer!=null){
+                    return;
+                }
+
                 this.timer = window.setInterval(()=>{
+
                     console.log("running")
                     this.complete = 0;
                     let sumRef = 0;
@@ -74,6 +76,27 @@
                     }
                 },100)
 
+            },
+            messUp(type){
+                if(this.timer!=null){
+                    this.$message({
+                        message: '请等待程序停止后再执行打乱操作。',
+                        type: 'warning'
+                    });
+                    return;
+                }
+                if(type==-1){
+                    //倒叙
+                    this.arrayData.sort(function(a,b){ return b-a })
+                }else {
+                    this.arrayData.sort(function(){ return 0.5 - Math.random() })
+                }
+
+
+                for(let refName in this.$refs){
+                    this.$refs[refName].isComplate = 0;
+                    this.$refs[refName].reload();
+                }
             }
         },
         computed: {},

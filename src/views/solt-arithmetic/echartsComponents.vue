@@ -18,23 +18,23 @@
     let timePicker = null;
     export default {
 
-        props:{
-            id:{
-              type:String,
-              default(){
-                  return ""
-              }
+        props: {
+            id: {
+                type: String,
+                default() {
+                    return ""
+                }
             },
             //父组件传来的统一数据
-            arrayDataP:{
-                type:Array,
-                default(){
+            arrayDataP: {
+                type: Array,
+                default() {
                     return [];
                 }
             },
-            title:{
-                type:String,
-                default(){
+            title: {
+                type: String,
+                default() {
                     return "冒泡排序";
                 }
             },
@@ -42,18 +42,18 @@
         },
         data() {
             return {
-                disposeData:[
-                    0,0,0,0,0,0,0,0,0,0,
-                    0,0,0,0,0,0,0,0,0,0,
-                    0,0,0,0,0,0,0,0,0,0,
+                disposeData: [
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                 ],
-                arrayDataO:[],
-                i:0,
-                j:29,
-                isComplate:0,
-                myChart:{},
-                changeCount:0,
-                sumCount:0,
+                arrayDataO: [],
+                i: 0,
+                j: 29,
+                isComplate: 0,
+                myChart: {},
+                changeCount: 0,
+                sumCount: 0,
 
             }
         },
@@ -74,52 +74,60 @@
             // 基于准备好的dom，初始化echarts实例
             this.myChart = echarts.init(document.getElementById(vm.id));
             // 绘制图表
-            this.myChart.setOption(vm.options,false);
+            this.myChart.setOption(vm.options, false);
         },
 
         watch: {},
         methods: {
-            softMethods(){
+            softMethods() {
 //                console.log("data length 222",this.arrayData.length)
                 //如果 i == this.arrayData.length-1 跳出循环
-                if(this.i==this.arrayData.length-1){
+                if (this.i == this.arrayData.length - 1) {
                     this.isComplate = 1;
                 }
-                for(;this.i < this.arrayData.length - 1;){
+                for (; this.i < this.arrayData.length - 1;) {
 //                  console.log("进入循环1")
-                    for(;;){// j开始等于0，
-                        if(!(this.j >  this.i)){
+                    for (; ;) {// j开始等于0，
+                        if (!(this.j > this.i)) {
                             this.j = 29;
 //                          this.softMethods()
                             this.i++
                             this.sumCount++;
-                            this.myChart.setOption(this.options,false);
+                            this.myChart.setOption(this.options, false);
                             return
                         }
 //                      console.log("进入循环2")
-                        if(this.arrayData[this.j] > this.arrayData[this.j+1]){
-                            let temp = this.arrayData[this.j];
-                            this.arrayData[this.j] = this.arrayData[this.j+1];
-                            this.arrayData[this.j+1] = temp;
+                        if (this.arrayData[this.j - 1] > this.arrayData[this.j]) {
+                            let temp = this.arrayData[this.j - 1];
+                            this.arrayData[this.j - 1] = this.arrayData[this.j];
+                            this.arrayData[this.j] = temp;
                             this.changeCount++;
                         }
                         this.j--;
                         this.sumCount++;
-                        this.myChart.setOption(this.options,false);
+                        this.myChart.setOption(this.options, false);
                         return
                     }
                 }
             },
-            changeDataj(){
+            changeDataj() {
                 let vm = this;
 //                timePicker = window.setInterval(function () {
-                    vm.softMethods()
+                vm.softMethods()
 //                },150);
             },
+            reload() {
+                this.i = 0;
+                this.j = 29;
+                this.changeCount = 0;
+                this.sumCount = 0;
+                Object.assign(this.arrayDataO, this.arrayDataP);
+                this.myChart.setOption(this.options, false);
+            }
 
         },
         computed: {
-            options(){
+            options() {
                 return {
                     title: {
                         text: this.title
@@ -134,34 +142,35 @@
                         name: '',
                         type: 'bar',
                         data: this.arrayData,
-                        itemStyle:{
-                            normal:{
-                                color:(item)=>{
+                        itemStyle: {
+                            normal: {
+                                color: (item) => {
 //                                    console.log(item)
 //                                    if(this.disposeData[item.dataIndex]==0){
 //                                        return '#409EFF';
 //                                    }else {
 //                                        return '#67C23A'
 //                                    }
-                                    if(item.dataIndex+1==item.data){
+                                    if (item.dataIndex + 1 == item.data) {
                                         return '#67C23A'
-                                    }else if(item.dataIndex == this.j){
+                                    } else if (item.dataIndex == this.j) {
                                         return '#F56C6C'
-                                    }else {
+                                    } else {
                                         return '#409EFF';
                                     }
                                 }
-                            }},
-                    },{
+                            }
+                        },
+                    }, {
                         type: 'bar',
                         barGap: '-140%',
                         itemStyle: {
                             opacity: 0.8,
-                            color:(item)=>{
+                            color: (item) => {
                                 //console.log(item)
-                                if(item.dataIndex==this.j){
+                                if (item.dataIndex == this.j) {
                                     return '#E6A23C';
-                                }else {
+                                } else {
                                     return 'rgba(252,214,80,0)'
                                 }
 //                                if(item.dataIndex+1==item.data){
@@ -172,23 +181,23 @@
                             }
                         },
                         barWidth: '60%',
-                        z:-1,
+                        z: -1,
                         data: [
-                            30,30,30,30,30,30,30,30,30,30,
-                            30,30,30,30,30,30,30,30,30,30,
-                            30,30,30,30,30,30,30,30,30,30,
+                            30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+                            30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
+                            30, 30, 30, 30, 30, 30, 30, 30, 30, 30,
                         ],
                     }]
                 }
             },
-            arrayData:{
-                get(){
-                    if(this.arrayDataO.length==0){
+            arrayData: {
+                get() {
+                    if (this.arrayDataO.length == 0) {
                         Object.assign(this.arrayDataO, this.arrayDataP);
                     }
                     return this.arrayDataO;
                 },
-                set(val){
+                set(val) {
                     this.this.arrayDataO = val;
                 }
             },
