@@ -1,15 +1,13 @@
 <template>
     <div>
-        欢迎界面2
+        {{$route.query.id}}
     </div>
 </template>
 
 <script>
     export default {
         data() {
-            return {
-
-            }
+            return {}
         },
         created() {
 
@@ -19,15 +17,10 @@
         },
 
         watch: {},
-        methods: {
-
-        },
-        computed: {
-
-        },
+        methods: {},
+        computed: {},
         components: {}
     }
-
 </script>
 
 <style scoped>

@@ -11,7 +11,7 @@
 </script>
 
 <style>
-  @import "./styles/main.less";
   @import "./styles/common.less";
+  @import "./styles/main.less";
   @import "//at.alicdn.com/t/font_695557_cgjresnpavan61or.css";
 </style>
