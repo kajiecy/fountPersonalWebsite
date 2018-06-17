@@ -52,7 +52,7 @@ router.beforeEach((to, from, next) => {
     // loading = Loading.service({fullscreen: true});
     //点击
     // console.log("全局守卫触发",to)
-    // console.log("matched is ",to.matched);
+    console.log("matched is ",to.matched);
     store.commit("updateBreadcrumbArr",to.matched);
 
     next();

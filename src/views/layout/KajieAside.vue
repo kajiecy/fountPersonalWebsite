@@ -18,9 +18,9 @@
                          :src="isCollapse==false?$store.state.app.logoImgUrl:$store.state.app.logoImgSmallUrl">
                 </span>
             </div>
-            <template v-for="item in menuList">
+            <template v-for="(item,index) in menuList">
                 <template v-if="item.subs">
-                    <el-submenu :index="item.index">
+                    <el-submenu :index="item.index" :key="index">
                         <template slot="title"><i :class="item.icon"></i>
                             <span slot="title">
                 {{ item.title }}
@@ -28,12 +28,11 @@
                 <template v-if="item.index === 'StatisticOverview'">
                   <el-popover
                           placement="bottom"
-                          width="200"
                           trigger="click"
                           v-model="visible2"
                           popper-class="user_statistic_popver"
-                          :width="250"
                           ref="myPopover"
+                          :width="250"
                   >
                     <div>
                       <div style="padding: 10px;background-color: #F7F7F7;border-bottom: 1px solid #E4E7ED">
@@ -67,7 +66,7 @@
                     </el-submenu>
                 </template>
                 <template v-else>
-                    <el-menu-item :index="item.index">
+                    <el-menu-item :index="item.index" :key="index">
                         <i :class="item.icon"></i>
                         <span slot="title">{{ item.title }}</span>
                     </el-menu-item>
@@ -113,11 +112,11 @@
 //                        }
 //                        this.$store.commit("changeUserMenuData",userMenuData);
 //                    })
-                let userMenuData = [{id: 0, title: "自定义title"}];
+                let userMenuData = [{id: 0, title: "自定义子菜单"}];
                 this.$store.commit("changeUserMenuData", userMenuData);
 
             },
-            selectMenu(index, indexPath) {
+            selectMenu(index) {
                 if (index.indexOf("!") == -1) {
                     this.$router.push({name: index});
                 } else {
@@ -166,11 +165,11 @@
                 let userStatisticOverview = {
                     icon: 'el-icon-setting',
                     index: 'StatisticOverview',
-                    title: '数据概览',
+                    title: '可操作菜单',
                     subs: []
                 }
                 if (this.$store.state.user.userMenuData.length > 0) {
-                    this.$store.state.user.userMenuData.forEach(function (item, index) {
+                    this.$store.state.user.userMenuData.forEach(function (item) {
                         userStatisticOverview.subs.push({
                             index: 'custom' + "!" + item.id,
                             title: item.title,
@@ -196,15 +195,7 @@
 </script>
 
 <style scoped>
-    .el-aside {
 
-    }
-
-    .user_statistic_popver{
-        padding: 0;
-        /*display: none;*/
-        background-color: #67C23A;
-    }
 
     .user_statistic_add{
         display: inline-block;
@@ -250,4 +241,5 @@
     [class*="el-icon"] {
         color: white;
     }
+
 </style>
