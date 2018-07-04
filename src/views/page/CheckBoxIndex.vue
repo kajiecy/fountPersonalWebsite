@@ -82,6 +82,7 @@
         </div>
         <div style="text-align: right">
             <el-button type="primary" @click="insertStep=1">上一步</el-button>
+
         </div>
         <div>
             <!--{{moduleList}}-->
@@ -168,9 +169,10 @@
         },
         methods: {
             handleCheckAllChange(val, index) {
-//                alert(index);
+//              alert(index);
+                console.log("defaultModule",defaultModule)
                 if (index == -1) {
-                    this.moduleList = val ? allModule : defaultModule;
+                    this.moduleList = val ? Object.assign([], allModule): Object.assign([], defaultModule);
                     this.isIndeterminate = false;
                 } else {
                     for (let {name, value, isDisabled} of this.moduleData[index]) {
