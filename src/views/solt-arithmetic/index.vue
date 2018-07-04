@@ -104,6 +104,11 @@
             myEchart,
             SelectionSortComponents,
             InsertionSortComponents,
+        },
+        // 路由离开时释放循环任务
+        beforeRouteLeave (to, from , next) {
+            window.clearInterval(this.timer);
+            next();
         }
     }
 </script>

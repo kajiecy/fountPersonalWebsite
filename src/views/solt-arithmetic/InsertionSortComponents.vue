@@ -16,7 +16,6 @@
 
 <script>
 
-    let timePicker = null;
     export default {
 
         props: {

@@ -77,10 +77,10 @@
 //                console.log(command)
                 if(command==='drop-delete'){
                     this.$confirm('确认删除？')
-                        .then(_ => {
+                        .then(() => {
                             this.$emit("delItem");
                         })
-                        .catch(_ => {});
+                        .catch(() => {});
 
                 }else if(command==='drop-option'){
                     this.$emit("optItem");

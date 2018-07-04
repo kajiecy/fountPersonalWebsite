@@ -1,6 +1,6 @@
 <template>
     <div>
-        欢迎界面2
+        欢迎界面3
     </div>
 </template>
 

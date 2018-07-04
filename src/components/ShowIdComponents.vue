@@ -1,6 +1,6 @@
 <template>
     <div>
-        {{$route.query.id}}
+        路由传来的id：{{$route.query.id}}
     </div>
 </template>
 

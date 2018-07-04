@@ -10,9 +10,8 @@ export const otherRouter = {
     redirect: '/home',
     component: Main,
     children: [
-        {path: 'home', title: {i18n: 'home'}, name: 'home', component: () => import('@/views/Welcome.vue')},
-        {path: '/custom', title: {i18n: 'custom'}, name: 'custom', component: () => import('@/components/ShowIdComponents.vue')},
-
+        {path: 'home', name: 'home', component: () => import('@/views/Welcome.vue')},
+        {path: '/custom', name: 'custom',meta:{title: 'div拖拽Demo'}, component: () => import('@/components/ShowIdComponents.vue')},
     ]
 };
 
