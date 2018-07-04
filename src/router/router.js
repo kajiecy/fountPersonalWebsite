@@ -41,7 +41,7 @@ export const appRouter = [
                 path: 'div-move',
                 name: 'div-move',
                 meta:{
-                    icon: 'el-icon-date',
+                    icon: 'el-icon-rank',
                     title: 'div拖拽Demo',
                 },
                 component: () => import('@/views/div-move/index.vue')
@@ -53,57 +53,17 @@ export const appRouter = [
         component: Main,
         children: [
             {
-                path: 'test1',
-                name: 'test1',
-                meta:{
-                    icon: 'el-icon-date',
-                    title: 'test1界面',
-                },
-                component: () => import('@/views/testviews/test1.vue')
-            }
-        ]
-    },
-    {
-        path: '/',
-        component: Main,
-        children: [
-            {
-                path: 'test2',
-                name: 'test2',
+                path: 'my-checkbox',
+                name: 'my-checkbox',
                 meta:{
                     icon: 'el-icon-news',
-                    title: 'test2界面',
+                    title: '高级CheckBox',
                 },
-                component: () => import('@/views/testviews/test2.vue')
+                component: () => import('@/views/page/CheckBoxIndex.vue')
             }
         ]
     },
-    {
-        path: '/',
-        component: Main,
-        meta:{
-            icon: 'el-icon-menu',
-            title: 'test3界面',
-        },
-        children: [
-            {
-                path: 'test3-1',
-                name: 'test3-1',
-                meta:{
-                    title: 'test3-1界面1',
-                },
-                component: () => import('@/views/testviews/test3-1.vue')
-            },
-            {
-                path: 'test3-2',
-                name: 'test3-2',
-                meta:{
-                    title: 'test3-2界面2',
-                },
-                component: () => import('@/views/testviews/test3-2.vue')
-            }
-        ]
-    }
+
 
 ];
 export const undefindRouter = {

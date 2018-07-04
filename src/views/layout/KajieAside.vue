@@ -164,9 +164,9 @@
             menuList() {
                 let menuList = [];
                 let userStatisticOverview = {
-                    icon: 'el-icon-setting',
+                    icon: 'el-icon-edit-outline',
                     index: 'StatisticOverview',
-                    title: '数据概览',
+                    title: '可编辑的菜单',
                     subs: []
                 }
                 if (this.$store.state.user.userMenuData.length > 0) {
