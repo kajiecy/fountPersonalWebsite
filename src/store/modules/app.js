@@ -8,6 +8,11 @@ const app = {
         logoImgSmallUrl:'http://qiniu.kajie88.com/siteLOGO-small.PNG',
         menuList:[],
         breadcrumbArr:[{title:'首页',name:'home'}],
+        rootURL:'http://localhost:8080/',
+        interfaceURL: {
+            readExcelTest:'test/readExcel',
+            receiveExcel:'test/receiveExcel',
+        }
     },
     getters:{
         getMenuList(){
@@ -40,7 +45,9 @@ const app = {
             // console.log("menuList's data is",menuList)
             return menuList;
         },
-
+        getWholeUrl:(state) => (interName) => {
+            return state.rootURL+state.interfaceURL[interName];
+        }
     },
     mutations: {
         changeCollapse (state) {

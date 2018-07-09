@@ -62,6 +62,21 @@ export const appRouter = [
             }
         ]
     },
+    {
+        path: '/',
+        component: Main,
+        children: [
+            {
+                path: 'read-excel',
+                name: 'read-excel',
+                meta:{
+                    icon: 'el-icon-document',
+                    title: '读取Excel表',
+                },
+                component: () => import('@/views/page/ReadExcel.vue')
+            }
+        ]
+    },
 
 
 ];
