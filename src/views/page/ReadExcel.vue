@@ -15,6 +15,7 @@
                     :action="$store.getters.getWholeUrl('receiveExcel')"
                     :show-file-list="false"
                     :on-success="upSuccess"
+                    :before-upload="beforeUpload"
                     >
                 <el-button size="small" type="primary">点击上传</el-button>
             </el-upload>
@@ -68,8 +69,10 @@
                 console.log("file",file);
                 this.tableData.tableHead = response.data.tableHead;
                 this.tableData.tableBody = response.data.tableBody;
+            },
+            beforeUpload(file){
+                console.log("update file",file);
             }
-
 
 
         },

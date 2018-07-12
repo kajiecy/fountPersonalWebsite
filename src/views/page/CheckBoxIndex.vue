@@ -96,26 +96,26 @@
     const defaultModule = ["3-1", "4-2", "5-1"];
     const moduleData = [
         [
-            {value: '1300021', name: '模块1-1'},
-            {value: '1300020', name: '模块1-2'},
-            {value: '1300023', name: '模块1-3'},
+            {value: '1-1', name: '模块1-1'},
+            {value: '1-2', name: '模块1-2'},
+            {value: '1-3', name: '模块1-3'},
         ], [
-            {value: '1300003', name: '模块2-1'},
-            {value: '1300025', name: '模块2-2'},
-            {value: '1300004', name: '模块2-3'},
-            {value: '1300007', name: '模块2-4'},
-            {value: '1300005', name: '模块2-5'},
-            {value: '1300015', name: '模块2-6'},
-            {value: '1300008', name: '模块2-7'},
+            {value: '2-1', name: '模块2-1'},
+            {value: '2-2', name: '模块2-2'},
+            {value: '2-3', name: '模块2-3'},
+            {value: '2-4', name: '模块2-4'},
+            {value: '2-5', name: '模块2-5'},
+            {value: '2-6', name: '模块2-6'},
+            {value: '2-7', name: '模块2-7'},
         ], [
-            {value: '1300009', name: '模块3-1', isDisabled: true},
+            {value: '3-1', name: '模块3-1', isDisabled: true},
         ], [
-            {value: '1300010', name: '模块4-1'},
-            {value: '1300011', name: '模块4-2', isDisabled: true},
-            {value: '1300018', name: '模块4-3'},
-            {value: '1300019', name: '模块4-4'},
+            {value: '4-1', name: '模块4-1'},
+            {value: '4-2', name: '模块4-2', isDisabled: true},
+            {value: '4-3', name: '模块4-3'},
+            {value: '4-4', name: '模块4-4'},
         ], [
-            {value: '1300013', name: '模块5-1', isDisabled: true},
+            {value: '5-1', name: '模块5-1', isDisabled: true},
         ],
     ];
 
