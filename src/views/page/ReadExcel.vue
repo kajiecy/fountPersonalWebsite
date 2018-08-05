@@ -4,6 +4,7 @@
         <span
                 style="display: inline-block;width: 10px;height: 24px;background-color: #409EFF;position: relative;top: 7px;margin: 0px 10px"></span>
             <span style="font-size: 14px;">上传并读取Excel</span>
+            <el-button @click="testJson">111</el-button>
             <el-tooltip class="item" effect="dark" content="" placement="right">
                 <div slot="content">暂时仅支持常规格式的Excel的读取^_^, <a href="http://qiniu.kajie88.com/test.xls" style="color: #409EFF">模板下载</a></div>
                 <i class="el-icon-question" style="color: #E6A23C;display: inline-block;margin-left: 10px;cursor: pointer"></i>
@@ -39,6 +40,8 @@
 </template>
 
 <script>
+    import ElButton from "../../../node_modules/element-ui/packages/button/src/button.vue";
+
     export default {
         data() {
             return {
@@ -72,12 +75,18 @@
             },
             beforeUpload(file){
                 console.log("update file",file);
+            },
+            testJson(){
+                this.$req.post(this.$store.state.app.interfaceURL.readExcelTest,
+                    {}, data => {
+                        console.log(data)
+                    })
             }
-
-
         },
         computed: {},
-        components: {}
+        components: {
+            ElButton
+        }
     }
 </script>
 
