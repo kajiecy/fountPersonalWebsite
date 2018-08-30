@@ -77,7 +77,21 @@ export const appRouter = [
             }
         ]
     },
-
+    {
+        path: '/',
+        component: Main,
+        children: [
+            {
+                path: 'mock-test',
+                name: 'mock-test',
+                meta:{
+                    icon: 'el-icon-edit',
+                    title: 'mockJs测试',
+                },
+                component: () => import('@/views/mocktest/MockTest.vue')
+            }
+        ]
+    },
 
 ];
 export const undefindRouter = {

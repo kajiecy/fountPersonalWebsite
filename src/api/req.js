@@ -48,10 +48,10 @@ function apiAxios (method, url, params, success, failure, page){
     let reqParam = {};
     reqParam["param"] = params;
     let logintoken = localStorage.getItem('token');
-    if(logintoken!=null){
+    if(logintoken!==null){
         reqParam["token"]=logintoken;
     }
-    if(page!=null){
+    if(page!==null){
         reqParam["page"]=page;
     }
 
@@ -62,8 +62,7 @@ function apiAxios (method, url, params, success, failure, page){
         params: method === 'GET' || method === 'DELETE' ? reqParam : null,
         baseURL: store.state.app.rootURL,
         withCredentials: false,
-    })
-        .then(function (res) {
+    }).then(function (res) {
             if(res.data.respStatus==="SUCCESS"){
                 if (success){
                     success(res.data.data,res.data.page)
@@ -95,27 +94,6 @@ function apiAxios (method, url, params, success, failure, page){
         //     }
         // })
 }
-// function apiAxios2 (filename,method, url, success){
-//
-//     axios({
-//         method: method,
-//         url: url,
-//         data: method === 'POST' || method === 'PUT' ? filename : null,
-//         params: method === 'GET' || method === 'DELETE' ? filename : null,
-//         baseURL: root,
-//         withCredentials: false,
-//     })
-//         .then(function (res) {
-//             success(res.data.data,res.data.page)
-//         })
-//         .catch(function (err){
-//             // alert(2);
-//             let res = err.response
-//             if (err) {
-//                 window.alert('api error, HTTP CODE:' + res.data.status)
-//             }
-//         })
-// }
 // 返回在vue模板中的调用接口
 export default {
     get: function (url, params, success, failure) {
@@ -133,13 +111,6 @@ export default {
     delete: function (url, params, success, failure) {
         return apiAxios('DELETE', url, params, success, failure)
     },
-    // getToken:function (success) {
-    //     return apiAxios2(null,'GET', "jsoncloud/common/qiNiu/get/uploadInfo", success)
-    // },
-    // getTokenWithName:function (filename,success) {
-    //     return apiAxios2({name:filename},'GET', "jsoncloud/common/qiNiu/get/uploadInfo", success)
-    // },
-
 }
 
 

@@ -6,7 +6,8 @@ import ElementUI from 'element-ui';
 import router from './router'
 import store from './store'
 import axios from 'axios';
-
+import Mock from './mock/index'
+Mock.init()
 
 // 引用API文件
 import req from './api/req.js'
