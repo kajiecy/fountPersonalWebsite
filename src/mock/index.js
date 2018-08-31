@@ -37,7 +37,6 @@ export default {
             } else {  // 如果没有这么一个人
                 return MockTools.resultData({},'用户名密码不正确');
             }
-
         });
         mockTools.doPost(store.state.app.interfaceURL.getUserList,function (param) {
             return MockTools.resultData({userList:users});
