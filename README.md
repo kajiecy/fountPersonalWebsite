@@ -8,7 +8,6 @@ http://www.kajie88.com
 
 ## 安装
 ```
-奥术大师多assassin的按时
 npm install mockjs --save-dev  //mockjs
 npm install axios-mock-adapter --save-dev  //mock-axios 拦截器
 ```
