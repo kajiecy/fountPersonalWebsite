@@ -80,15 +80,27 @@ export const appRouter = [
     {
         path: '/',
         component: Main,
+        meta:{
+            icon: 'el-icon-menu',
+            title: 'mockJs测试',
+        },
         children: [
             {
                 path: 'mock-test',
                 name: 'mock-test',
                 meta:{
                     icon: 'el-icon-edit',
-                    title: 'mockJs测试',
+                    title: '增删改查操作',
                 },
                 component: () => import('@/views/mocktest/MockTest.vue')
+            },
+            {
+                path: 'mock-auto-date',
+                name: 'mock-auto-date',
+                meta:{
+                    title: '数据生成测试',
+                },
+                component: () => import('@/views/mocktest/MockRandom.vue')
             }
         ]
     },

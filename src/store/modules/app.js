@@ -12,6 +12,13 @@ const app = {
         interfaceURL: {
             readExcelTest:'test/readExcel',
             receiveExcel:'test/receiveExcel',
+
+            login:'/user/login',
+            getUserList:'/user/getUserList',
+            addUser:'/user/addUser',
+            delUser:'/user/delUser',
+            getUserMoreInfoList:'/user/getUserMoreInfoList',
+
         }
     },
     getters:{

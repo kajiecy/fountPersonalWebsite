@@ -8,6 +8,7 @@
                 <div class="dis_table_cell textleft">email:{{item.email}}</div>
                 <div class="dis_table_cell textleft">password:{{item.password}}</div>
                 <div class="dis_table_cell textleft">name:{{item.name}}</div>
+                <div class="dis_table_cell textleft"><el-button @click="deleteUser(item.id)">删除</el-button></div>
             </div>
         </div>
         <div class="dis_table wd100">
@@ -75,30 +76,36 @@
         watch: {},
         methods: {
             checkPwd(){
-                this.$req.post('/user/login',
+                this.$req.post(this.$store.state.app.interfaceURL.login,
                     this.tryLogin, data => {
                         console.log(data)
                         this.loginInfo = data.user;
                     })
             },
             loadUserList(){
-                this.$req.post('/user/getUserList',
+                this.$req.post(this.$store.state.app.interfaceURL.getUserList,
                     null, data => {
                         console.log(data)
                         this.userList = data.userList;
                     })
             },
             addUser(){
-                this.$req.post('/user/addUser',
+                this.$req.post(this.$store.state.app.interfaceURL.addUser,
                     this.newUser, data => {
+                        this.loadUserList();
+                    })
+            },
+            deleteUser(userId){
+                this.$req.post(this.$store.state.app.interfaceURL.delUser,
+                    {id:userId}, data => {
                         this.loadUserList();
                     })
             }
         },
         computed: {},
         components: {
-            ElInput,
-            ElButton}
+
+        }
     }
 </script>
 
