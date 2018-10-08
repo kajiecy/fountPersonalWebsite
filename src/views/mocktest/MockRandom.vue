@@ -28,6 +28,11 @@
                     label="星级('star|2-5': '★')"
                     width="200">
             </el-table-column>
+            <el-table-column
+                    prop="data"
+                    label="日期"
+                    width="200">
+            </el-table-column>
         </el-table>
     </div>
 </template>

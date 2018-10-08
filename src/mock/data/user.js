@@ -23,8 +23,12 @@ export const userMoreInfo = Mock.mock({
         'email':'@email',
         'name':'@cname',
         'age|18-90':1,
-        'data':Mock.Random.date('yyyy-MM-dd'),
+        'data':'@date("yyyy-MM-dd HH:mm:ss")',
         'star|2-5': '★',
+        'childInfo':{
+            'name':'@cname',
+            'age|18-90':1
+        }
     }]
 }).list;
 

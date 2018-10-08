@@ -104,6 +104,21 @@ export const appRouter = [
             }
         ]
     },
+    {
+        path: '/',
+        component: Main,
+        children: [
+            {
+                path: 'es6-symbol',
+                name: 'es6-symbol',
+                meta:{
+                    icon: 'el-icon-edit',
+                    title: 'ES6笔记',
+                },
+                component: () => import('@/views/es6learn/SymbolDemo.vue')
+            }
+        ]
+    },
 
 ];
 export const undefindRouter = {

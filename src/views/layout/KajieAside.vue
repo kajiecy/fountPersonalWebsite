@@ -190,7 +190,8 @@
                 }
             }
         },
-        components: {}
+        components: {},
+
     }
 </script>
 

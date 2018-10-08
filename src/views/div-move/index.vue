@@ -68,7 +68,10 @@
             draggable,
             DragCard,
         },
-
+        beforeRouteEnter (to, from, next) {
+            console.log("触发before守卫")
+            next();
+        }
     }
 </script>
 

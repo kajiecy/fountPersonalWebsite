@@ -107,6 +107,7 @@
         },
         // 路由离开时释放循环任务
         beforeRouteLeave (to, from , next) {
+            console.log("路由离开")
             window.clearInterval(this.timer);
             next();
         }
