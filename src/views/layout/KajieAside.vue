@@ -120,6 +120,7 @@
                 if (index.indexOf("!") == -1) {
                     this.$router.push({name: index});
                 } else {
+                    alert(1)
                     let menuInfo = index.split("!");
                     this.$router.push({name: menuInfo[0], query: {id: menuInfo[1]}})
                 }
